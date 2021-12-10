@@ -15,17 +15,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.*;
 
-
-
 public class Main extends JComponent implements ActionListener{
-
-    public static void main(String[] args) {
-        new Main();
-       
-    } 
-    
-  
-
     public static final int WIDTH = 800;
     public static final int HEIGHT = 600;
     public static final int ITERATIONS = 100;
@@ -36,16 +26,13 @@ public class Main extends JComponent implements ActionListener{
 
     private BufferedImage buffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
     private Timer timer;
-
+    
     public Main(){
-        
-
+  
         buffer = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
         timer = new Timer(1,  this);
         //renderMandelbrotSet();
-
-       
-
+        
         JFrame frame = new JFrame("Mandelbrot set");
         
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,20 +40,8 @@ public class Main extends JComponent implements ActionListener{
         frame.getContentPane().add(this);
         frame.pack();
         frame.setVisible(true);
-        
-
-
-       
-       
-
-
     }
-
     
-    
-
-
-
     public void addNotify(){
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
         timer.start();
@@ -87,9 +62,7 @@ public class Main extends JComponent implements ActionListener{
         float cy = y;
 
         int i = 0;
-
-
-
+        
         for(;i<ITERATIONS; i++){
             float nx = x*x - y*y + cx; 
             float ny = 2 * x *y + cy; 
@@ -103,11 +76,7 @@ public class Main extends JComponent implements ActionListener{
         if (i == ITERATIONS) return 0x00000000;
         return Color.HSBtoRGB(((float)i / ITERATIONS + hueOffset)%1f, 0.5f, 1);
     }
-
-
-
-
-
+    
     public void paint(Graphics g){
         g.drawImage(buffer, 0,0,null);
     }
@@ -119,4 +88,8 @@ public class Main extends JComponent implements ActionListener{
         renderMandelbrotSet();
         repaint();
     }
+    
+    public static void main(String[] args) {
+        new Main();       
+    } 
 }
