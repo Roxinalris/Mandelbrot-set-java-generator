@@ -47,7 +47,7 @@ public class Main extends JComponent implements ActionListener{
     public void renderMandelbrotSet(){
         for(int x= 0; x < WIDTH;x++ ){
             for (int y = 0; y < HEIGHT; y++ ){
-                int color = calculatePoint((x - WIDTH/2f)/SCALE, (y - HEIGHT/2f )/SCALE);
+                int color = calculatePoint(-1+(x - WIDTH/2f)/SCALE, (y - HEIGHT/2f )/SCALE);
 
                 buffer.setRGB(x, y, color);
             }
